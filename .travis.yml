@@ -9,8 +9,9 @@ before_install:
 
 install: composer install --no-interaction
 
-#script:
+script:
 #  - composer run-coverage
+  - echo 1
 
 env:
   global:
