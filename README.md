@@ -1,7 +1,5 @@
 # symfony-testing-base
 
-PhpUnit + Symfony + MongoDB + Salesforce test cases
-
 `composer require --dev comsave/symfony-testing-base`
 
 [![Release](https://img.shields.io/github/v/release/comsave/symfony-testing-base)](https://github.com/comsave/symfony-testing-base/releases)
