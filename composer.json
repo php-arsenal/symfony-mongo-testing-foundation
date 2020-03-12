@@ -9,7 +9,7 @@
     ],
     "require": {
         "php": ">=7.3",
-        "doctrine/mongodb-odm-bundle": "^4.1",
+        "doctrine/mongodb-odm-bundle": "^3.4|^4.1",
         "symfony/framework-bundle": "^3.4|^4.3",
         "comsave/salesforce-mapper-bundle": "^3.5"
     },
