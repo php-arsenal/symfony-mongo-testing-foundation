@@ -1,6 +1,6 @@
 # symfony-testing-base
 
-PhpUnit + Symfony + MongoDB + Salesforce
+PhpUnit + Symfony + MongoDB + Salesforce test cases
 
 `composer require --dev comsave/symfony-testing-base`
 
