@@ -1,0 +1,11 @@
+{
+    "name": "comsave/symfony-testing-base",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vaidas Bagdonas",
+            "email": "vaidas.bagdonas@comsave.com"
+        }
+    ],
+    "require": {}
+}
