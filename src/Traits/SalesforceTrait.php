@@ -63,7 +63,7 @@ trait SalesforceTrait
 
     protected function sendSalesforceOutboundMessage(string $messagePath): Response
     {
-        $message = file_get_contents(sprintf('%s/../SalesforceMessages/%s.xml', dirname(__FILE__), $messagePath));
+        $message = file_get_contents(sprintf('%s/SalesforceMessages/%s.xml', getcwd().'/tests', $messagePath));
 
         $this->getClient()->request('POST', $this->salesforceApiPath, [], [], [
             'Content-Type' => 'text/xml; charset=utf-8',

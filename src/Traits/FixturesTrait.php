@@ -45,7 +45,7 @@ trait FixturesTrait
 
         foreach ($fixtureClasses as $fixtureClass) {
             $fixtureClass = str_replace('\\', '/', $fixtureClass);
-            $fixtureClass = str_replace('App/Tests', dirname(__FILE__).'/..', $fixtureClass);
+            $fixtureClass = str_replace('App/Tests', getcwd().'/tests', $fixtureClass);
             $fixtureClass = sprintf('%s.php', $fixtureClass);
             $loader = new ContainerAwareLoader($this->getContainer());
 
