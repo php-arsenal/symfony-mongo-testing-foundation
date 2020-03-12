@@ -1,4 +1,5 @@
 /vendor/
 /.idea/
-
+/tests/_output
+!/tests/_output/.gitignore
 composer.lock
