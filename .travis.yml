@@ -12,7 +12,7 @@ script:
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=226bcf0d38d6c66365904ee73620540592d59ab4b2ad1666ea887373519d3d1a
+#    - CC_TEST_REPORTER_ID=226bcf0d38d6c66365904ee73620540592d59ab4b2ad1666ea887373519d3d1a
     - SYMFONY_VERSION=^4.4
 
 matrix:
@@ -22,14 +22,14 @@ matrix:
     - php: 7.4
       env: SYMFONY_VERSION=^3.4
 
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+#before_script:
+#  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+#  - chmod +x ./cc-test-reporter
+#  - ./cc-test-reporter before-build
 
-after_script:
-  - mv tests/_output/coverage.xml clover.xml
-  - ./cc-test-reporter after-build --coverage-input-type clover --id $CC_TEST_REPORTER_ID --exit-code $TRAVIS_TEST_RESULT
+#after_script:
+#  - mv tests/_output/coverage.xml clover.xml
+#  - ./cc-test-reporter after-build --coverage-input-type clover --id $CC_TEST_REPORTER_ID --exit-code $TRAVIS_TEST_RESULT
 
 notifications:
   slack:
