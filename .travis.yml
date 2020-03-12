@@ -12,7 +12,7 @@ script:
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=ee32822eff72992fef06c3afebae1e826d80cb766c918bbf7f33b6f001efde1c
+    - CC_TEST_REPORTER_ID=226bcf0d38d6c66365904ee73620540592d59ab4b2ad1666ea887373519d3d1a
     - SYMFONY_VERSION=^4.3
 
 matrix:
