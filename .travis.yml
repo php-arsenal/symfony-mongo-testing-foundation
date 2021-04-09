@@ -14,6 +14,7 @@ env:
     - CC_TEST_REPORTER_ID=aec5ece43cd1e2ab08f52435f2fed112c8a8ad4fbcc601c80c040242f99908d0
 
 before_script:
+  - echo "xdebug.mode=coverage" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
