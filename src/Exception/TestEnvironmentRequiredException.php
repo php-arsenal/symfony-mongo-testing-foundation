@@ -1,6 +1,6 @@
 <?php
 
-namespace Comsave\SymfonyTestingBase\Exception;
+namespace PhpArsenal\SymfonyMongoTestingFoundation\Exception;
 
 class TestEnvironmentRequiredException extends \Exception
 {

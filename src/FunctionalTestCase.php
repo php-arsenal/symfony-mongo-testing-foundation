@@ -1,8 +1,8 @@
 <?php
 
-namespace Comsave\SymfonyTestingBase;
+namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
-use Comsave\SymfonyTestingBase\Traits\FakerTrait;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FakerTrait;
 use Spatie\Snapshots\MatchesSnapshots;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;

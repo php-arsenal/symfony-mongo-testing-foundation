@@ -1,9 +1,9 @@
 <?php
 
-namespace Comsave\SymfonyTestingBase;
+namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
-use Comsave\SymfonyTestingBase\Traits\FakerTrait;
-use Comsave\SymfonyTestingBase\Traits\IdGeneratorTrait;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FakerTrait;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\IdGeneratorTrait;
 use PHPUnit\Framework\TestCase;
 use Spatie\Snapshots\MatchesSnapshots;
 

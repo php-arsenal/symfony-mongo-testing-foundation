@@ -1,6 +1,6 @@
 <?php
 
-namespace Comsave\SymfonyTestingBase\Traits;
+namespace PhpArsenal\SymfonyMongoTestingFoundation\Traits;
 
 use LogicItLab\Salesforce\MapperBundle\Mapper;
 use Symfony\Component\HttpFoundation\Response;

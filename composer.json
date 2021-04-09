@@ -1,32 +1,27 @@
 {
-    "name": "comsave/symfony-testing-base",
+    "name": "php-arsenal/symfony-mongo-testing-foundation",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Vaidas Bagdonas",
-            "email": "vaidas.bagdonas@comsave.com"
-        }
-    ],
     "require": {
         "php": ">=7.3.0",
-        "doctrine/mongodb-odm-bundle": "^3.4|^4.1",
-        "symfony/framework-bundle": "^3.4|^4.4",
-        "comsave/salesforce-mapper-bundle": "^3.5"
+        "ext-mongo": "*",
+        "doctrine/mongodb-odm-bundle": "*",
+        "symfony/framework-bundle": "*",
+        "comsave/salesforce-mapper-bundle": "*"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.3",
-        "fzaninotto/faker": "^1.9",
-        "spatie/phpunit-snapshot-assertions": "^3.0",
-        "phpunit/phpunit": "^7.0|^8.0|^9.0"
+        "doctrine/doctrine-fixtures-bundle": "*",
+        "fzaninotto/faker": "*",
+        "spatie/phpunit-snapshot-assertions": "*",
+        "phpunit/phpunit": "*"
     },
     "autoload": {
         "psr-4": {
-            "Comsave\\SymfonyTestingBase\\": "src/"
+            "PhpArsenal\\SymfonyMongoTestingFoundation": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Comsave\\SymfonyTestingBase\\Tests\\": "tests/"
+            "PhpArsenal\\SymfonyMongoTestingFoundation\\Tests\\": "tests/"
         }
     },
     "scripts": {

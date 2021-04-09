@@ -1,6 +1,6 @@
 <?php
 
-namespace Comsave\SymfonyTestingBase\Traits;
+namespace PhpArsenal\SymfonyMongoTestingFoundation\Traits;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
 

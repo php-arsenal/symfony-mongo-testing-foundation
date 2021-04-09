@@ -1,8 +1,8 @@
 <?php
 
-namespace Comsave\SymfonyTestingBase\Tests;
+namespace PhpArsenal\SymfonyMongoTestingFoundation\Tests\Unit;
 
-use Comsave\SymfonyTestingBase\UnitTestCase;
+use PhpArsenal\SymfonyTestingBase\UnitTestCase;
 
 class UnitTestCaseTest extends UnitTestCase
 {

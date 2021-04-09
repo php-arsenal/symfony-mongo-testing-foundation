@@ -1,6 +1,6 @@
 <?php
 
-namespace Comsave\SymfonyTestingBase\Traits;
+namespace PhpArsenal\SymfonyMongoTestingFoundation\Traits;
 
 use Doctrine\Common\DataFixtures\Executor\MongoDBExecutor;
 use Doctrine\Common\DataFixtures\ProxyReferenceRepository;

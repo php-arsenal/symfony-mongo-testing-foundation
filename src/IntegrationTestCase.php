@@ -1,11 +1,11 @@
 <?php
 
-namespace Comsave\SymfonyTestingBase;
+namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
-use Comsave\SymfonyTestingBase\Exception\TestEnvironmentRequiredException;
-use Comsave\SymfonyTestingBase\Traits\DatabaseTrait;
-use Comsave\SymfonyTestingBase\Traits\FixturesTrait;
-use Comsave\SymfonyTestingBase\Traits\SalesforceTrait;
+use PhpArsenal\SymfonyMongoTestingFoundation\Exception\TestEnvironmentRequiredException;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\DatabaseTrait;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FixturesTrait;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\SalesforceTrait;
 use Symfony\Bundle\FrameworkBundle\Client;
 
 abstract class IntegrationTestCase extends FunctionalTestCase
