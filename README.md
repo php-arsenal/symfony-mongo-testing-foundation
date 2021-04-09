@@ -1,7 +1,7 @@
-# symfony-testing-base
+# php-arsenal/symfony-mongo-testing-foundation
 
-`composer require --dev comsave/symfony-testing-base`
+`composer require --dev php-arsenal/symfony-mongo-testing-foundation`
 
-[![Release](https://img.shields.io/github/v/release/comsave/symfony-testing-base)](https://github.com/comsave/symfony-testing-base/releases)
-[![Travis](https://img.shields.io/travis/comsave/symfony-testing-base)](https://travis-ci.org/comsave/symfony-testing-base)
-[![Test Coverage](https://img.shields.io/codeclimate/coverage/comsave/symfony-testing-base)](https://codeclimate.com/github/comsave/symfony-testing-base)
+[![Release](https://img.shields.io/github/v/release/php-arsenal/symfony-mongo-testing-foundation)](https://github.com/php-arsenal/symfony-mongo-testing-foundation/releases)
+[![Travis](https://img.shields.io/travis/php-arsenal/symfony-mongo-testing-foundation)](https://travis-ci.org/php-arsenal/symfony-mongo-testing-foundation)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/php-arsenal/symfony-mongo-testing-foundation)](https://codeclimate.com/github/php-arsenal/symfony-mongo-testing-foundation)
