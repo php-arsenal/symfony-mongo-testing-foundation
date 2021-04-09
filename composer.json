@@ -1,9 +1,9 @@
 {
     "name": "php-arsenal/symfony-mongo-testing-foundation",
+    "description": "Foundation classes for Symfony and MongoDB ODM testing",
     "license": "MIT",
     "require": {
         "php": ">=7.3.0",
-        "ext-mongo": "*",
         "doctrine/mongodb-odm-bundle": "*",
         "symfony/framework-bundle": "*",
         "comsave/salesforce-mapper-bundle": "*"
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PhpArsenal\\SymfonyMongoTestingFoundation": "src/"
+            "PhpArsenal\\SymfonyMongoTestingFoundation\\": "src/"
         }
     },
     "autoload-dev": {
