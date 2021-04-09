@@ -1,5 +1,7 @@
 # php-arsenal/symfony-mongo-testing-foundation
 
+PhpUnit Symfony Unit, Functional, Integration test cases (MongoDB + Salesforce) 
+
 `composer require --dev php-arsenal/symfony-mongo-testing-foundation`
 
 [![Release](https://img.shields.io/github/v/release/php-arsenal/symfony-mongo-testing-foundation)](https://github.com/php-arsenal/symfony-mongo-testing-foundation/releases)
