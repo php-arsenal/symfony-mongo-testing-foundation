@@ -2,7 +2,7 @@
 
 namespace PhpArsenal\SymfonyMongoTestingFoundation\Tests\Unit;
 
-use PhpArsenal\SymfonyTestingBase\UnitTestCase;
+use PhpArsenal\SymfonyMongoTestingFoundation\UnitTestCase;
 
 class UnitTestCaseTest extends UnitTestCase
 {
