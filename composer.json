@@ -5,7 +5,6 @@
     "require": {
         "php": ">=7.4.0",
         "doctrine/mongodb-odm-bundle": "^4.3",
-        "php-arsenal/salesforce-mapper-bundle": "^4.0",
         "php-arsenal/faker": "^1.9",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "symfony/framework-bundle": "^5.2"
