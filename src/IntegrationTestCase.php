@@ -12,7 +12,6 @@ abstract class IntegrationTestCase extends FunctionalTestCase
 {
     use DatabaseTrait;
     use FixturesTrait;
-    use SalesforceTrait;
 
     /** @var Client */
     protected $client;
@@ -33,13 +32,11 @@ abstract class IntegrationTestCase extends FunctionalTestCase
     public function setUp(): void
     {
         $this->dbOnSetUp();
-        $this->sfOnSetUp();
     }
 
     public function tearDown(): void
     {
         $this->dbOnTearDown();
-        $this->sfOnTearDown();
     }
 
     /**
