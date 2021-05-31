@@ -5,7 +5,6 @@ namespace PhpArsenal\SymfonyMongoTestingFoundation;
 use PhpArsenal\SymfonyMongoTestingFoundation\Exception\TestEnvironmentRequiredException;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\DatabaseTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FixturesTrait;
-use PhpArsenal\SymfonyMongoTestingFoundation\Traits\SalesforceTrait;
 use Symfony\Bundle\FrameworkBundle\Client;
 
 abstract class IntegrationTestCase extends FunctionalTestCase
