@@ -30,11 +30,15 @@ abstract class IntegrationTestCase extends FunctionalTestCase
      */
     public function setUp(): void
     {
+        parent::setUp();
+
         $this->dbOnSetUp();
     }
 
     public function tearDown(): void
     {
+        parent::tearDown();
+
         $this->dbOnTearDown();
     }
 
