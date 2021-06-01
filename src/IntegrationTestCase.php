@@ -31,6 +31,12 @@ abstract class IntegrationTestCase extends WebTestCase
         return $this->getContainer()->get($serviceName);
     }
 
+    public function setUp(): void
+    {
+        $this->getClient();
+        $this->dbOnSetUp();
+    }
+
     public function tearDown(): void
     {
         parent::tearDown();
