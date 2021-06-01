@@ -2,31 +2,39 @@
 
 namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
+use Exception;
 use PhpArsenal\SymfonyMongoTestingFoundation\Exception\TestEnvironmentRequiredException;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\ContainerTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\DatabaseTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FixturesTrait;
-use Symfony\Bundle\FrameworkBundle\Client;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpKernel\HttpKernelBrowser;
 
-abstract class IntegrationTestCase extends FunctionalTestCase
+abstract class IntegrationTestCase extends WebTestCase
 {
     use DatabaseTrait;
     use FixturesTrait;
+    use ContainerTrait;
 
-    /** @var Client */
-    protected $client;
+    /** @var HttpKernelBrowser */
+    protected HttpKernelBrowser $client;
 
-    /** @return Client|object */
-    public function getClient(): Client
+    public function getClient(): HttpKernelBrowser
     {
         if (!$this->client) {
-            $this->client = $this->getService('test.client');
+            $this->client = static::createClient();
         }
 
         return $this->client;
     }
 
+    public function getService(string $className)
+    {
+        return $this->getContainer()->get($className);
+    }
+
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function setUp(): void
     {

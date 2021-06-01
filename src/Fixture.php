@@ -2,8 +2,8 @@
 
 namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
-use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FakerTrait;
 use Doctrine\Persistence\ObjectManager;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FakerTrait;
 
 abstract class Fixture extends \Doctrine\Bundle\FixturesBundle\Fixture
 {

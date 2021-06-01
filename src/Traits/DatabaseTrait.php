@@ -3,6 +3,7 @@
 namespace PhpArsenal\SymfonyMongoTestingFoundation\Traits;
 
 use Doctrine\ODM\MongoDB\DocumentManager;
+use Exception;
 
 trait DatabaseTrait
 {
@@ -12,7 +13,7 @@ trait DatabaseTrait
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     protected function dbOnSetUp(): void
     {
@@ -24,7 +25,7 @@ trait DatabaseTrait
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     protected function dbClear(): void
     {

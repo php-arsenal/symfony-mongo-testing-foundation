@@ -2,6 +2,8 @@
 
 namespace PhpArsenal\SymfonyMongoTestingFoundation\Exception;
 
-class TestEnvironmentRequiredException extends \Exception
+use Exception;
+
+class TestEnvironmentRequiredException extends Exception
 {
 }
