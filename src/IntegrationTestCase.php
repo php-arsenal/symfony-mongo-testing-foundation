@@ -4,7 +4,6 @@ namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
 use Exception;
 use PhpArsenal\SymfonyMongoTestingFoundation\Exception\TestEnvironmentRequiredException;
-use PhpArsenal\SymfonyMongoTestingFoundation\Traits\ContainerTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\DatabaseTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FixturesTrait;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -14,10 +13,9 @@ abstract class IntegrationTestCase extends WebTestCase
 {
     use DatabaseTrait;
     use FixturesTrait;
-    use ContainerTrait;
 
-    /** @var KernelBrowser */
-    protected KernelBrowser $client;
+    /** @var ?KernelBrowser */
+    protected ?KernelBrowser $client = null;
 
     public function getClient(): KernelBrowser
     {
@@ -28,9 +26,9 @@ abstract class IntegrationTestCase extends WebTestCase
         return $this->client;
     }
 
-    public function getService(string $className)
+    public function getService(string $serviceName): ?object
     {
-        return $this->getContainer()->get($className);
+        return $this->getContainer()->get($serviceName);
     }
 
     /**
