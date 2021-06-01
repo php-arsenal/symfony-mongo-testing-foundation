@@ -7,8 +7,8 @@ use PhpArsenal\SymfonyMongoTestingFoundation\Exception\TestEnvironmentRequiredEx
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\ContainerTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\DatabaseTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FixturesTrait;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\HttpKernel\HttpKernelBrowser;
 
 abstract class IntegrationTestCase extends WebTestCase
 {
@@ -16,10 +16,10 @@ abstract class IntegrationTestCase extends WebTestCase
     use FixturesTrait;
     use ContainerTrait;
 
-    /** @var HttpKernelBrowser */
-    protected HttpKernelBrowser $client;
+    /** @var KernelBrowser */
+    protected KernelBrowser $client;
 
-    public function getClient(): HttpKernelBrowser
+    public function getClient(): KernelBrowser
     {
         if (!$this->client) {
             $this->client = static::createClient();
