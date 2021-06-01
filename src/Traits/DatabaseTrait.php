@@ -29,20 +29,19 @@ trait DatabaseTrait
     protected function dbClear(): void
     {
         $this->mustBeTestEnvironment();
-        $mongoClient = $this->dbGetManager()->getClient();
-        $testDatabaseName = $this->getContainer()->getParameter('default_database');
+        $db = $this->dbGetManager()->getClient()->selectDatabase($_ENV['MONGODB_DB']);
 
-        foreach ($mongoClient->selectDatabase($testDatabaseName)->listCollections() as $collection) {
-            $mongoClient->selectDatabase($testDatabaseName)->dropCollection($collection->getName());
+        foreach ($db->listCollections() as $collection) {
+            $db->dropCollection($collection->getName());
         }
     }
 
-    protected function dbFind(string $documentClass, $id)
+    protected function dbFind(string $documentClass, $id): ?object
     {
         return $this->dbGetManager()->find($documentClass, $id);
     }
 
-    protected function dbSave($model)
+    protected function dbSave($model): void
     {
         $this->dbGetManager()->persist($model);
         $this->dbGetManager()->flush();

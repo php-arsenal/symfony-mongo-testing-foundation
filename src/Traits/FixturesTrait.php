@@ -11,9 +11,6 @@ use Symfony\Bridge\Doctrine\DataFixtures\ContainerAwareLoader;
 
 trait FixturesTrait
 {
-    /**
-     * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
-     */
     protected function dbLoadFixtures(array $fixtureClasses, bool $shouldAppend = true): ReferenceRepository
     {
         $this->mustBeTestEnvironment();
@@ -36,16 +33,13 @@ trait FixturesTrait
         return $this->dbLoadFixtures([$fixtureClass], true)->getReference($fixtureClass);
     }
 
-    /**
-     * @SuppressWarnings(PHPMD.ElseExpression)
-     */
     private function dbResolveFixtureClasses(array $fixtureClasses): array
     {
         $fixtures = [];
 
         foreach ($fixtureClasses as $fixtureClass) {
             $fixtureClass = str_replace('\\', '/', $fixtureClass);
-            $fixtureClass = str_replace('App/Tests', getcwd().'/tests', $fixtureClass);
+            $fixtureClass = str_replace('Tests', getcwd().'/tests', $fixtureClass);
             $fixtureClass = sprintf('%s.php', $fixtureClass);
             $loader = new ContainerAwareLoader($this->getContainer());
 

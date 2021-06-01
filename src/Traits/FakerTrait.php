@@ -10,9 +10,6 @@ trait FakerTrait
     /** @var Generator */
     protected $faker;
 
-    /**
-     * @SuppressWarnings(PHPMD.StaticAccess)
-     */
     public function getFaker(): Generator
     {
         if (!$this->faker) {

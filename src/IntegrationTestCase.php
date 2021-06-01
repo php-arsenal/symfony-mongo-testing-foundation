@@ -43,7 +43,7 @@ abstract class IntegrationTestCase extends FunctionalTestCase
      */
     protected function mustBeTestEnvironment(): void
     {
-        if ('test' !== $this->getKernel()->getEnvironment()) {
+        if ('test' !== $this->getContainer()->getParameter('kernel.environment')) {
             throw new TestEnvironmentRequiredException();
         }
     }

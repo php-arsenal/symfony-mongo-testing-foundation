@@ -13,25 +13,13 @@ abstract class FunctionalTestCase extends KernelTestCase
     use MatchesSnapshots;
     use FakerTrait;
 
-    /** @var KernelInterface */
-    protected $bootedKernel;
+    public function setUp(): void
+    {
+        KernelTestCase::bootKernel();
+    }
 
     public function getService(string $className)
     {
         return $this->getContainer()->get($className);
-    }
-
-    public function getContainer(): ContainerInterface
-    {
-        return $this->getKernel()->getContainer();
-    }
-
-    public function getKernel(): KernelInterface
-    {
-        if (!$this->bootedKernel) {
-            $this->bootedKernel = static::bootKernel();
-        }
-
-        return $this->bootedKernel;
     }
 }
