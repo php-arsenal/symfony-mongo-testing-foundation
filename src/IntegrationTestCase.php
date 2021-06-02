@@ -2,12 +2,12 @@
 
 namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
-use Exception;
 use PhpArsenal\SymfonyMongoTestingFoundation\Exception\TestEnvironmentRequiredException;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\DatabaseTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FixturesTrait;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class IntegrationTestCase extends WebTestCase
 {
@@ -29,6 +29,11 @@ abstract class IntegrationTestCase extends WebTestCase
     public function getService(string $serviceName): ?object
     {
         return $this->getContainer()->get($serviceName);
+    }
+
+    public function jsonResponseDecode(Response $response): array
+    {
+        return json_decode((string)$response->getContent(), true);
     }
 
     public function setUp(): void
