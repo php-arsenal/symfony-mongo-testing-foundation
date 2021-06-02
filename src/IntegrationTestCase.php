@@ -4,7 +4,9 @@ namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
 use PhpArsenal\SymfonyMongoTestingFoundation\Exception\TestEnvironmentRequiredException;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\DatabaseTrait;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FakerTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FixturesTrait;
+use Spatie\Snapshots\MatchesSnapshots;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +15,8 @@ abstract class IntegrationTestCase extends WebTestCase
 {
     use DatabaseTrait;
     use FixturesTrait;
+    use MatchesSnapshots;
+    use FakerTrait;
 
     /** @var ?KernelBrowser */
     protected ?KernelBrowser $client = null;
