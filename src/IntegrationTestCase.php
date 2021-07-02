@@ -3,6 +3,7 @@
 namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
 use PhpArsenal\SymfonyMongoTestingFoundation\Exception\TestEnvironmentRequiredException;
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\AssertMatchesJsonObjectSnapshotTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\DatabaseTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FakerTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FixturesTrait;
@@ -15,8 +16,9 @@ abstract class IntegrationTestCase extends WebTestCase
 {
     use DatabaseTrait;
     use FixturesTrait;
-    use MatchesSnapshots;
     use FakerTrait;
+    use MatchesSnapshots;
+    use AssertMatchesJsonObjectSnapshotTrait;
 
     /** @var ?KernelBrowser */
     protected ?KernelBrowser $client = null;

@@ -3,7 +3,7 @@
     "description": "Foundation classes for Symfony and MongoDB ODM testing",
     "license": "MIT",
     "require": {
-        "php": ">=7.4.0",
+        "php": ">=8.0",
         "doctrine/mongodb-odm-bundle": "^4.3",
         "php-arsenal/faker": "^1.9",
         "doctrine/doctrine-fixtures-bundle": "^3.4",
