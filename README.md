@@ -1,6 +1,6 @@
 # php-arsenal/symfony-mongo-testing-foundation
 
-PhpUnit Symfony Unit, Functional, Integration test cases (MongoDB + Salesforce) 
+PhpUnit Symfony Unit, Functional, Integration test cases (+MongoDB) 
 
 `composer require --dev php-arsenal/symfony-mongo-testing-foundation`
 
