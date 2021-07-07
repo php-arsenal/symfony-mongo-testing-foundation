@@ -26,6 +26,10 @@ class SnapshotJsonObjectDriver implements Driver
         ]);
 
         return $serializer->serialize($data, JsonEncoder::FORMAT, [
+            AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
+                $className = array_reverse(explode('\\', get_class($object)))[0];
+                return 'CIRCULAR_' . strtoupper($className);
+            },
             AbstractNormalizer::IGNORED_ATTRIBUTES => $this->ignoredProperties,
             'json_encode_options' => JSON_PRETTY_PRINT,
         ]);
