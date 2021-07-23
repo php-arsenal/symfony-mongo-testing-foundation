@@ -16,14 +16,20 @@ Example `tests/autoload.php`:
 ```php
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+$rootDir = realpath(__DIR__.'/..');
 
-(new Symfony\Component\Dotenv\Dotenv(false))->load(__DIR__.'/../.env');
-(new Symfony\Component\Dotenv\Dotenv(false))->load(__DIR__.'/../.env.test');
+require $rootDir.'/vendor/autoload.php';
 
-if(file_exists(__DIR__.'/../.env.test.local')) {
-    (new Symfony\Component\Dotenv\Dotenv(false))->load(__DIR__.'/../.env.test.local');
+use Symfony\Component\Dotenv\Dotenv;
+
+$dotenv = (new Dotenv())->usePutenv(true);
+$dotenv->load("$rootDir/.env");
+$dotenv->load("$rootDir/.env.test");
+
+if (file_exists("$rootDir/.env.test.local")) {
+    $dotenv->load("$rootDir/.env.test.local");
 }
+
 ```
 
 ## Features
