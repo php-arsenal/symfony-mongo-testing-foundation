@@ -2,6 +2,7 @@
 
 namespace PhpArsenal\SymfonyMongoTestingFoundation;
 
+use PhpArsenal\SymfonyMongoTestingFoundation\Traits\AssertMatchesJsonObjectSnapshotTrait;
 use PhpArsenal\SymfonyMongoTestingFoundation\Traits\FakerTrait;
 use Spatie\Snapshots\MatchesSnapshots;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -9,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 abstract class FunctionalTestCase extends KernelTestCase
 {
     use MatchesSnapshots;
+    use AssertMatchesJsonObjectSnapshotTrait;
     use FakerTrait;
 
     public function setUp(): void
