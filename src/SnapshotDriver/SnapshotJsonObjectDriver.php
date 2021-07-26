@@ -6,6 +6,7 @@ use PHPUnit\Framework\Assert;
 use Spatie\Snapshots\Driver;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -27,8 +28,11 @@ class SnapshotJsonObjectDriver implements Driver
 
         return $serializer->serialize($data, JsonEncoder::FORMAT, [
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
-                $className = array_reverse(explode('\\', get_class($object)))[0];
-                return 'CIRCULAR_' . strtoupper($className);
+                return sprintf('CIRCULAR_%s', $this->getObjectClassName($object));
+            },
+            AbstractObjectNormalizer::ENABLE_MAX_DEPTH => true,
+            AbstractObjectNormalizer::MAX_DEPTH_HANDLER => function ($innerObject, $outerObject, string $attributeName, string $format = null, array $context = []) {
+                return sprintf('MAX_DEPTH_%s', $this->getObjectClassName($innerObject));
             },
             AbstractNormalizer::IGNORED_ATTRIBUTES => $this->ignoredProperties,
             'json_encode_options' => JSON_PRETTY_PRINT,
@@ -43,5 +47,10 @@ class SnapshotJsonObjectDriver implements Driver
     public function match($expected, $actual)
     {
         Assert::assertEquals($expected, $this->serialize($actual));
+    }
+
+    private function getObjectClassName($object): string
+    {
+        return array_reverse(explode('\\', get_class($object)))[0];
     }
 }
