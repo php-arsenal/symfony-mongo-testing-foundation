@@ -28,11 +28,12 @@ class SnapshotJsonObjectDriver implements Driver
 
         return $serializer->serialize($data, JsonEncoder::FORMAT, [
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
-                return sprintf('CIRCULAR_%s', $this->getObjectClassName($object));
+                return sprintf('CIRCULAR_%s', array_reverse(explode('\\', get_class($object)))[0]);
             },
+            AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true,
             AbstractObjectNormalizer::ENABLE_MAX_DEPTH => true,
             AbstractObjectNormalizer::MAX_DEPTH_HANDLER => function ($innerObject, $outerObject, string $attributeName, string $format = null, array $context = []) {
-                return sprintf('MAX_DEPTH_%s', $this->getObjectClassName($innerObject));
+                return sprintf('MAX_DEPTH_%s', array_reverse(explode('\\', get_class($object)))[0]);
             },
             AbstractNormalizer::IGNORED_ATTRIBUTES => $this->ignoredProperties,
             'json_encode_options' => JSON_PRETTY_PRINT,
@@ -47,10 +48,5 @@ class SnapshotJsonObjectDriver implements Driver
     public function match($expected, $actual)
     {
         Assert::assertEquals($expected, $this->serialize($actual));
-    }
-
-    private function getObjectClassName($object): string
-    {
-        return array_reverse(explode('\\', get_class($object)))[0];
     }
 }
