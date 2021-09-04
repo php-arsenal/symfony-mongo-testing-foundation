@@ -8,6 +8,7 @@ use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\AbstractObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
@@ -26,7 +27,7 @@ class SnapshotJsonObjectDriver implements Driver
             new JsonEncoder(),
         ]);
 
-        return $serializer->serialize($data, JsonEncoder::FORMAT, [
+        $normalizedData = $serializer->normalize($data, 'array', [
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
                 return sprintf('CIRCULAR_%s', array_reverse(explode('\\', get_class($object)))[0]);
             },
@@ -36,7 +37,12 @@ class SnapshotJsonObjectDriver implements Driver
                 return sprintf('MAX_DEPTH_%s', array_reverse(explode('\\', get_class($object)))[0]);
             },
             AbstractNormalizer::IGNORED_ATTRIBUTES => $this->ignoredProperties,
-            'json_encode_options' => JSON_PRETTY_PRINT,
+        ]);
+
+        $this->unsetIgnoredKeys($normalizedData, $this->ignoredProperties);
+
+        return $serializer->serialize($normalizedData, JsonEncoder::FORMAT, [
+            'json_encode_options' => JSON_PRETTY_PRINT
         ]);
     }
 
@@ -48,5 +54,17 @@ class SnapshotJsonObjectDriver implements Driver
     public function match($expected, $actual)
     {
         Assert::assertEquals($expected, $this->serialize($actual));
+    }
+
+    private function unsetIgnoredKeys(array &$values, array $ignoredKeys): void
+    {
+        foreach($values as $key => $value) {
+            if(is_array($value)) {
+                $this->unsetIgnoredKeys($value, $ignoredKeys);
+            }
+            else if (in_array($key, $ignoredKeys)) {
+                unset($values[$key]);
+            }
+        }
     }
 }
