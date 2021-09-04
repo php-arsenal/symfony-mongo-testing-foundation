@@ -9,8 +9,8 @@ trait AssertMatchesJsonObjectSnapshotTrait
 {
     use MatchesSnapshots;
 
-    public function assertMatchesJsonObjectSnapshot($actual, array $ignoredProperties = []): void
+    public function assertMatchesJsonObjectSnapshot($actual, array $ignoredProperties = [], array $redactedProperties = []): void
     {
-        $this->assertMatchesSnapshot($actual, new SnapshotJsonObjectDriver($ignoredProperties));
+        $this->assertMatchesSnapshot($actual, new SnapshotJsonObjectDriver($ignoredProperties, $redactedProperties));
     }
 }

@@ -14,7 +14,10 @@ use Symfony\Component\Serializer\Serializer;
 
 class SnapshotJsonObjectDriver implements Driver
 {
-    public function __construct(private array $ignoredProperties = [])
+    public function __construct(
+        private array $ignoredProperties = [],
+        private array $redactedProperties = []
+    )
     {
     }
 
@@ -39,7 +42,8 @@ class SnapshotJsonObjectDriver implements Driver
             AbstractNormalizer::IGNORED_ATTRIBUTES => $this->ignoredProperties,
         ]);
 
-        $this->unsetIgnoredKeys($normalizedData, $this->ignoredProperties);
+        $this->ignoreKeys($normalizedData, $this->ignoredProperties);
+        $this->redactKeys($normalizedData, $this->redactedProperties);
 
         return $serializer->serialize($normalizedData, JsonEncoder::FORMAT, [
             'json_encode_options' => JSON_PRETTY_PRINT
@@ -56,14 +60,27 @@ class SnapshotJsonObjectDriver implements Driver
         Assert::assertEquals($expected, $this->serialize($actual));
     }
 
-    private function unsetIgnoredKeys(array &$values, array $ignoredKeys): void
+    private function ignoreKeys(array &$values, array $ignoredKeys): void
     {
         foreach($values as $key => $value) {
             if (in_array($key, $ignoredKeys)) {
                 unset($values[$key]);
             }
             else if(is_array($value)) {
-                $this->unsetIgnoredKeys($value, $ignoredKeys);
+                $this->ignoreKeys($value, $ignoredKeys);
+                $values[$key] = $value;
+            }
+        }
+    }
+
+    private function redactKeys(array &$values, array $redactedKeys): void
+    {
+        foreach($values as $key => $value) {
+            if (in_array($key, $redactedKeys)) {
+                $values[$key] = 'REDACTED';
+            }
+            else if(is_array($value)) {
+                $this->redactKeys($value, $redactedKeys);
                 $values[$key] = $value;
             }
         }
