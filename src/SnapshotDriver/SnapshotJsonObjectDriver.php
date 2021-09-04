@@ -59,11 +59,12 @@ class SnapshotJsonObjectDriver implements Driver
     private function unsetIgnoredKeys(array &$values, array $ignoredKeys): void
     {
         foreach($values as $key => $value) {
-            if(is_array($value)) {
-                $this->unsetIgnoredKeys($value, $ignoredKeys);
-            }
-            else if (in_array($key, $ignoredKeys)) {
+            if (in_array($key, $ignoredKeys)) {
                 unset($values[$key]);
+            }
+            else if(is_array($value)) {
+                $this->unsetIgnoredKeys($value, $ignoredKeys);
+                $values[$key] = $value;
             }
         }
     }
