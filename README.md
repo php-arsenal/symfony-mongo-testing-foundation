@@ -42,5 +42,4 @@ Extend the following for your tests respectivelly as needed:
 Traits:
 * `DatabaseTrait` handles commond DocumentManager functions and clears the test database upon test start.
 * `FakerTrait` gives you access to the [faker](https://github.com/php-arsenal/Faker) to help you generate data for tests
-* `FixturesTrait` handles fixtures as the name describes
 * `LoggerTrait` gives you easy access to the logger if necessary
