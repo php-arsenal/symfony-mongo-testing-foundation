@@ -2,7 +2,9 @@
 
 PhpUnit Symfony Unit, Functional, Integration test cases (+MongoDB) 
 
-`composer require --dev php-arsenal/symfony-mongo-testing-foundation`
+```
+composer require --dev php-arsenal/symfony-mongo-testing-foundation
+```
 
 [![Release](https://img.shields.io/github/v/release/php-arsenal/symfony-mongo-testing-foundation)](https://github.com/php-arsenal/symfony-mongo-testing-foundation/releases)
 [![CI](https://img.shields.io/github/workflow/status/php-arsenal/symfony-mongo-testing-foundation/CI)](https://github.com/php-arsenal/symfony-mongo-testing-foundation/actions/workflows/ci.yml)
