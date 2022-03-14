@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Response;
 abstract class IntegrationTestCase extends WebTestCase
 {
     use DatabaseTrait;
-    use FixturesTrait;
     use FakerTrait;
     use MatchesSnapshots;
     use AssertMatchesJsonObjectSnapshotTrait;
