@@ -2,7 +2,10 @@
 
 namespace PhpArsenal\SymfonyMongoTestingFoundation\SnapshotDriver;
 
+use App\General\Doctrine\AbstractDocument;
 use PHPUnit\Framework\Assert;
+use ProxyManager\Configuration;
+use ProxyManager\Inflector\ClassNameInflector;
 use Spatie\Snapshots\Driver;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
@@ -14,6 +17,8 @@ use Symfony\Component\Serializer\Serializer;
 
 class SnapshotJsonObjectDriver implements Driver
 {
+    private static ?ClassNameInflector $classNameInflector = null;
+
     public function __construct(
         private array $ignoredProperties = [],
         private array $redactedProperties = []
@@ -32,12 +37,12 @@ class SnapshotJsonObjectDriver implements Driver
 
         $normalizedData = $serializer->normalize($data, 'array', [
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object, $format, $context) {
-                return sprintf('CIRCULAR_%s', array_reverse(explode('\\', get_class($object)))[0]);
+                return sprintf('CIRCULAR_%s', array_reverse(explode('\\', self::resolveFromObject($object)))[0]);
             },
             AbstractObjectNormalizer::DISABLE_TYPE_ENFORCEMENT => true,
             AbstractObjectNormalizer::ENABLE_MAX_DEPTH => true,
             AbstractObjectNormalizer::MAX_DEPTH_HANDLER => function ($innerObject, $outerObject, string $attributeName, string $format = null, array $context = []) {
-                return sprintf('MAX_DEPTH_%s', array_reverse(explode('\\', get_class($object)))[0]);
+                return sprintf('MAX_DEPTH_%s', array_reverse(explode('\\', self::resolveFromObject($innerObject)))[0]);
             },
             AbstractNormalizer::IGNORED_ATTRIBUTES => $this->ignoredProperties,
         ]);
@@ -84,5 +89,24 @@ class SnapshotJsonObjectDriver implements Driver
                 $values[$key] = $value;
             }
         }
+    }
+
+    private static function resolve(string $proxyObjectClass): string
+    {
+        return self::getClassNameInflector()->getUserClassName($proxyObjectClass);
+    }
+
+    private static function resolveFromObject(object $object): string
+    {
+        return self::resolve($object::class);
+    }
+
+    private static function getClassNameInflector(): ClassNameInflector
+    {
+        if (!self::$classNameInflector) {
+            self::$classNameInflector = (new Configuration())->getClassNameInflector();
+        }
+
+        return self::$classNameInflector;
     }
 }
