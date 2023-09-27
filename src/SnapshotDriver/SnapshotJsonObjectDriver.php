@@ -81,7 +81,7 @@ class SnapshotJsonObjectDriver implements Driver
     private function redactKeys(array &$values, array $redactedKeys): void
     {
         foreach($values as $key => $value) {
-            if (in_array($key, $redactedKeys) && $value !== null) {
+            if (in_array($key, $redactedKeys) && ($value !== null || (is_array($value) && !empty($value)))) {
                 $values[$key] = 'REDACTED';
             }
             else if(is_array($value)) {
